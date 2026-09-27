@@ -181,7 +181,7 @@
       //  Set the course passcode here.
       //  Case-sensitive. Change whenever you like and re-upload.
       // ---------------------------------------------------------------
-      const COURSE_PASSCODE = 'econ3_1405';
+      const COURSE_PASSCODE = 'micro3_1405';
 
       const gate      = document.getElementById('ecoGate');
       const materials = document.getElementById('ecoMaterials');
