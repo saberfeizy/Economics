@@ -1,39 +1,362 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Saber Feizy</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>clean · minimal</title>
+  <!-- no external fonts, no frameworks — pure plain -->
+  <style>
+    /* reset & base */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #fcfcfc;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      font-weight: 400;
+      line-height: 1.6;
+      color: #1a1a1a;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      padding: 1.5rem 1rem;
+    }
+
+    /* plain container, no shadows, no rounded corners */
+    .container {
+      max-width: 680px;
+      width: 100%;
+      margin: 0 auto;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* header / site name — minimal */
+    .site-header {
+      margin-bottom: 2.5rem;
+    }
+
+    .site-header h1 {
+      font-size: 1.5rem;
+      font-weight: 450;
+      letter-spacing: -0.01em;
+      color: #111;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid #e0e0e0;
+    }
+
+    /* tab navigation — minimal, no background, just underline */
+    .tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.25rem 1.75rem;
+      margin-bottom: 2.75rem;
+      border-bottom: 1px solid #eaeaea;
+      padding-bottom: 0.125rem;
+    }
+
+    .tab-btn {
+      background: transparent;
+      border: none;
+      padding: 0.5rem 0;
+      font-size: 1rem;
+      font-weight: 400;
+      color: #5f5f5f;
+      cursor: pointer;
+      font-family: inherit;
+      letter-spacing: 0.01em;
+      transition: color 0.1s ease;
+      border-bottom: 2px solid transparent;
+      margin-bottom: -1px; /* overlap the border */
+      white-space: nowrap;
+    }
+
+    .tab-btn:hover {
+      color: #111;
+    }
+
+    .tab-btn.active {
+      color: #111;
+      border-bottom-color: #111;
+      font-weight: 450;
+    }
+
+    /* panels — plain, no extra decoration */
+    .panel {
+      display: none;
+      animation: none; /* no fade, just plain show */
+      padding: 0.25rem 0;
+    }
+
+    .panel.active {
+      display: block;
+    }
+
+    /* typography inside panels */
+    .panel h2 {
+      font-size: 1.35rem;
+      font-weight: 450;
+      margin-bottom: 1.25rem;
+      letter-spacing: -0.01em;
+      color: #111;
+    }
+
+    .panel h3 {
+      font-size: 1rem;
+      font-weight: 500;
+      margin: 1.5rem 0 0.5rem 0;
+      color: #222;
+    }
+
+    .panel p {
+      margin-bottom: 1.25rem;
+      color: #2a2a2a;
+    }
+
+    .panel ul {
+      margin: 0.75rem 0 1.5rem 0;
+      padding-left: 1.25rem;
+      list-style-type: circle;
+    }
+
+    .panel li {
+      margin-bottom: 0.4rem;
+      color: #2a2a2a;
+    }
+
+    .panel a {
+      color: #111;
+      text-decoration: underline;
+      text-decoration-thickness: 0.5px;
+      text-underline-offset: 2px;
+      text-decoration-color: #b0b0b0;
+    }
+
+    .panel a:hover {
+      text-decoration-color: #111;
+    }
+
+    /* contacts — clean list, no extra fluff */
+    .contact-list {
+      list-style: none;
+      padding: 0;
+      margin: 0.5rem 0 0 0;
+    }
+
+    .contact-list li {
+      margin-bottom: 0.6rem;
+      padding-left: 0;
+      color: #2a2a2a;
+    }
+
+    .contact-list .label {
+      display: inline-block;
+      width: 5.5rem;
+      color: #5f5f5f;
+    }
+
+    /* horizontal rule style — minimal */
+    hr {
+      border: none;
+      border-top: 1px solid #eaeaea;
+      margin: 1.5rem 0 1.25rem 0;
+    }
+
+    /* small, muted footer */
+    .footer-note {
+      margin-top: 3rem;
+      padding-top: 1.25rem;
+      border-top: 1px solid #ececec;
+      font-size: 0.8rem;
+      color: #8f8f8f;
+      text-align: left;
+      letter-spacing: 0.01em;
+    }
+
+    /* ensure mobile tabs don't break */
+    @media (max-width: 420px) {
+      .tabs {
+        gap: 0.25rem 1.25rem;
+      }
+      .tab-btn {
+        font-size: 0.95rem;
+      }
+      .site-header h1 {
+        font-size: 1.35rem;
+      }
+    }
+  </style>
 </head>
-
 <body>
+<div class="container">
+  <!-- minimal site title -->
+  <header class="site-header">
+    <h1>alex rivera</h1>
+  </header>
 
-    <h1>Saber Feizy</h1>
+  <!-- 4 tabs: home, research, teaching, contacts -->
+  <nav class="tabs" aria-label="Main tabs">
+    <button class="tab-btn active" data-tab="home">home</button>
+    <button class="tab-btn" data-tab="research">research</button>
+    <button class="tab-btn" data-tab="teaching">teaching</button>
+    <button class="tab-btn" data-tab="contacts">contacts</button>
+  </nav>
 
-    <p>Economist</p>
+  <!-- home panel -->
+  <section id="home" class="panel active">
+    <h2>home</h2>
+    <p>I am a researcher and educator working at the intersection of computational methods and social systems. Currently based in the Pacific Northwest.</p>
+    <p>This page is intentionally minimal — a quiet corner of the web. I use it to share updates, publications, and teaching materials.</p>
+    <p>Feel free to browse the tabs above. For a more detailed CV or to get in touch, see <a href="#" data-goto="contacts">contacts</a>.</p>
+    <hr>
+    <p style="font-size:0.95rem; color:#3a3a3a;">Recent: a new working paper on decentralized data governance is available — see <a href="#" data-goto="research">research</a>.</p>
+  </section>
 
-    <h2>About</h2>
+  <!-- research panel -->
+  <section id="research" class="panel">
+    <h2>research</h2>
+    <p>My work spans computational social science, network analysis, and the ethics of data-intensive systems. I am particularly interested in how small communities govern shared resources.</p>
+    <h3>selected publications</h3>
+    <ul>
+      <li><strong>Rivera, A.</strong>, &amp; Chen, L. (2024). “Decentralized data commons: a field study.” <em>Journal of Social Computing</em>, 12(3), 201–220.</li>
+      <li><strong>Rivera, A.</strong> (2023). “Networked resilience in local food systems.” <em>Proc. of the 9th International Conference on Complex Networks</em>, 88–102.</li>
+      <li>Okafor, M., &amp; <strong>Rivera, A.</strong> (2022). “Algorithmic mediation and community trust.” <em>Ethics and Information Technology</em>, 24(4), 1–15.</li>
+    </ul>
+    <h3>working papers</h3>
+    <ul>
+      <li>“Governing the commons in digital infrastructures” (under review, 2025)</li>
+      <li>“Small-scale networks: a computational approach” (draft available upon request)</li>
+    </ul>
+    <p>I collaborate with colleagues at the <a href="#">Center for Civic Media</a> and the <a href="#">Open Data Institute</a>.</p>
+  </section>
 
-    <p>
-        Welcome to my personal website.
-    </p>
+  <!-- teaching panel -->
+  <section id="teaching" class="panel">
+    <h2>teaching</h2>
+    <p>I teach courses on data ethics, computational social science, and research design. My goal is to help students think critically about the tools we use.</p>
+    <h3>current courses (2025)</h3>
+    <ul>
+      <li><strong>Data &amp; Society</strong> — undergraduate seminar, spring 2025</li>
+      <li><strong>Computational Methods for Social Research</strong> — graduate level, fall 2025</li>
+      <li><strong>Ethics of Algorithms</strong> — interdisciplinary workshop, winter 2025</li>
+    </ul>
+    <h3>past courses</h3>
+    <ul>
+      <li>Introduction to Programming for Social Scientists (2022–2024)</li>
+      <li>Network Analysis Lab (2021, 2023)</li>
+    </ul>
+    <p>All syllabi and teaching materials are available on request. Please see <a href="#" data-goto="contacts">contacts</a>.</p>
+  </section>
 
-    <h2>Research</h2>
+  <!-- contacts panel -->
+  <section id="contacts" class="panel">
+    <h2>contacts</h2>
+    <p>I am always happy to hear from students, collaborators, and anyone interested in my work.</p>
+    <ul class="contact-list">
+      <li><span class="label">email</span> alex.rivera [at] example.edu</li>
+      <li><span class="label">github</span> <a href="#">github.com/alexrivera</a></li>
+      <li><span class="label">mastodon</span> <a href="#">@alex@social.example</a></li>
+      <li><span class="label">office</span> 240A, Science Hall (by appointment)</li>
+      <li><span class="label">mail</span> Department of Social Computing, 500 University Way</li>
+    </ul>
+    <hr>
+    <p style="font-size:0.95rem; color:#3a3a3a;">For a faster reply, please include a clear subject line and context. I usually respond within 3–5 days.</p>
+  </section>
 
-    <p>
-        My research focuses on policy analysis,
-        consumer behavior, and health economics.
-    </p>
+  <!-- minimal footer note -->
+  <div class="footer-note">
+    <span>plain · minimal · no cookies, no tracking</span>
+  </div>
+</div>
 
-    <h2>Publications</h2>
+<!-- tiny script: tab switching + internal navigation (no dependencies) -->
+<script>
+  (function() {
+    // get all tab buttons and panels
+    const tabButtons = document.querySelectorAll('.tab-btn');
+    const panels = {
+      home: document.getElementById('home'),
+      research: document.getElementById('research'),
+      teaching: document.getElementById('teaching'),
+      contacts: document.getElementById('contacts')
+    };
 
-    <p>
-        xxxxxs
-    </p>
+    // function to activate a specific tab by name
+    function activateTab(tabName) {
+      // update buttons
+      tabButtons.forEach(btn => {
+        const isActive = btn.dataset.tab === tabName;
+        btn.classList.toggle('active', isActive);
+        // optional: set aria-selected (not necessary for minimal, but nice)
+        btn.setAttribute('aria-selected', isActive ? 'true' : 'false');
+      });
 
-    <h2>Contact</h2>
+      // update panels: show only the selected, hide others
+      Object.keys(panels).forEach(key => {
+        const panel = panels[key];
+        if (key === tabName) {
+          panel.classList.add('active');
+        } else {
+          panel.classList.remove('active');
+        }
+      });
 
-    <p>
-        your.email@example.com
-    </p>
+      // optional: update URL hash without jumping (clean, minimal)
+      if (history.replaceState) {
+        history.replaceState(null, null, '#' + tabName);
+      }
+    }
 
+    // add click event to each tab button
+    tabButtons.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const tabName = btn.dataset.tab;
+        if (tabName && panels[tabName]) {
+          activateTab(tabName);
+        }
+      });
+    });
+
+    // handle internal links (e.g., from home to contacts / research)
+    document.querySelectorAll('[data-goto]').forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetTab = link.dataset.goto;
+        if (targetTab && panels[targetTab]) {
+          activateTab(targetTab);
+        }
+      });
+    });
+
+    // on page load: check URL hash for direct linking
+    function initFromHash() {
+      const hash = window.location.hash.replace('#', '');
+      if (hash && panels[hash]) {
+        activateTab(hash);
+      } else {
+        // default to home (already active in HTML, but just in case)
+        activateTab('home');
+      }
+    }
+
+    // run after DOM is ready (script is at end of body, so immediate)
+    initFromHash();
+
+    // listen to hash changes (back/forward buttons)
+    window.addEventListener('hashchange', () => {
+      const hash = window.location.hash.replace('#', '');
+      if (hash && panels[hash]) {
+        activateTab(hash);
+      } else {
+        activateTab('home');
+      }
+    });
+  })();
+</script>
 </body>
 </html>
