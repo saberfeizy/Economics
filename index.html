@@ -5,6 +5,63 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Saber Feizy</title>
   <!-- no external fonts, no frameworks — pure plain -->
+
+  /* ECO509 passcode gate */
+.gate {
+  margin-top: 1rem;
+  padding: 1rem 0 0.5rem 0;
+  border-top: 1px solid #eaeaea;
+}
+.gate label {
+  display: block;
+  font-size: 0.95rem;
+  color: #3a3a3a;
+  margin-bottom: 0.4rem;
+}
+.gate input {
+  font-family: inherit;
+  font-size: 0.95rem;
+  padding: 0.45rem 0.6rem;
+  border: 1px solid #d0d0d0;
+  background: #fff;
+  color: #111;
+  width: 100%;
+  max-width: 280px;
+  margin-bottom: 0.75rem;
+  border-radius: 0;
+}
+.gate input:focus {
+  outline: 1px solid #111;
+  outline-offset: 0;
+}
+.gate button {
+  background: transparent;
+  border: 1px solid #111;
+  color: #111;
+  font-family: inherit;
+  font-size: 0.9rem;
+  padding: 0.4rem 1rem;
+  cursor: pointer;
+  border-radius: 0;
+}
+.gate button:hover {
+  background: #111;
+  color: #fff;
+}
+.gate .error {
+  color: #b00020;
+  font-size: 0.85rem;
+  margin-top: 0.25rem;
+}
+.materials {
+  margin-top: 1.25rem;
+  padding-top: 1rem;
+  border-top: 1px solid #eaeaea;
+}
+.materials h3 {
+  margin-top: 0.75rem;
+}
+  
   <style>
     /* reset & base */
     * {
