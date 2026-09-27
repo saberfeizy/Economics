@@ -200,10 +200,10 @@
 
   <!-- 4 tabs: home, research, teaching, contacts -->
   <nav class="tabs" aria-label="Main tabs">
-    <button class="tab-btn active" data-tab="Home">Home</button>
-    <button class="tab-btn" data-tab="Research">Research</button>
-    <button class="tab-btn" data-tab="Teaching">Teaching</button>
-    <button class="tab-btn" data-tab="Contact">Contact</button>
+    <button class="tab-btn active" data-tab="home">home</button>
+    <button class="tab-btn" data-tab="research">research</button>
+    <button class="tab-btn" data-tab="teaching">teaching</button>
+    <button class="tab-btn" data-tab="contact">contact</button>
   </nav>
 
 
@@ -217,7 +217,7 @@
   <!-- home panel -->
   <section id="Home" class="panel active">
     <h2>Welcome</h2>
-    <p>Welcome to my github page.</p>
+    <p>Welcome to my github page. Feel free to browse tabs above.</p>
   </section>
 
 
@@ -228,7 +228,7 @@
   
   
   <!-- research panel -->
-  <section id="Research" class="panel">
+  <section id="research" class="panel">
 
     <p>My work spans policy analysis, consumer behavior, and health economics.</p>
 
@@ -263,25 +263,6 @@ use among US youth, 2022.” <em>Preventive Medicine</em>, 197, 108322. https://
 
 <p><a href="micro3.html"><strong>MICROECONOMICS III<strong> — Undergraduate Microeconomics III, Fall 2026 </a></p>
 
-
-
-  <div class="gate" id="ecoGate">
-    <label for="ecoPass">Enter Microeconomics III passcode here to unlock</label>
-    <input type="password" id="ecoPass" placeholder="enter passcode" autocomplete="off">
-    <button id="ecoSubmit">unlock</button>
-    <div class="error" id="ecoError" style="display:none;"></div>
-  </div>
-
-  <div class="materials" id="ecoMaterials" style="display:none;">
-    <h3>Microeconomics III materials</h3>
-    <ul>
-      <li><a href="#">Syllabus (PDF)</a></li>
-      <li><a href="#">Lecture 1 — Introduction</a></li>
-      <li><a href="#">Problem set 1</a></li>
-      <li><a href="#">Dataset — sample.csv</a></li>
-    </ul>
-  </div>
-  <!-- ▲ end protected materials ▲ -->
 
   </section>
 
@@ -321,10 +302,10 @@ use among US youth, 2022.” <em>Preventive Medicine</em>, 197, 108322. https://
     // get all tab buttons and panels
     const tabButtons = document.querySelectorAll('.tab-btn');
     const panels = {
-      home: document.getElementById('Home'),
-      research: document.getElementById('Research'),
-      teaching: document.getElementById('Teaching'),
-      contacts: document.getElementById('Contact')
+      home: document.getElementById('home'),
+      research: document.getElementById('research'),
+      teaching: document.getElementById('teaching'),
+      contact: document.getElementById('contact')
     };
 
     // function to activate a specific tab by name
