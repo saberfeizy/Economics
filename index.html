@@ -395,5 +395,66 @@ use among US youth, 2022.” <em>Preventive Medicine</em>, 197, 108322. https://
     });
   })();
 </script>
+<script>
+  (function() {
+    // ---------------------------------------------------------------
+    //  CHANGE THIS to the passcode you want students to type in.
+    //  (Note: it lives in the source, so it's a soft gate, not real auth.)
+    // ---------------------------------------------------------------
+    const COURSE_PASSCODE = 'eco509-2025';
+
+    const gate       = document.getElementById('ecoGate');
+    const materials  = document.getElementById('ecoMaterials');
+    const passInput  = document.getElementById('ecoPass');
+    const submitBtn  = document.getElementById('ecoSubmit');
+    const errorEl    = document.getElementById('ecoError');
+
+    if (!gate || !materials || !passInput || !submitBtn) return;
+
+    // remember unlocked state for this browser session
+    const STORAGE_KEY = 'eco509_unlocked';
+
+    function unlock() {
+      gate.style.display = 'none';
+      materials.style.display = 'block';
+      try { sessionStorage.setItem(STORAGE_KEY, 'true'); } catch (e) {}
+    }
+
+    function showError(msg) {
+      errorEl.textContent = msg;
+      errorEl.style.display = 'block';
+    }
+
+    function tryUnlock() {
+      errorEl.style.display = 'none';
+      errorEl.textContent = '';
+      const entered = passInput.value;
+      if (!entered) {
+        showError('Please enter the passcode.');
+        return;
+      }
+      if (entered === COURSE_PASSCODE) {
+        unlock();
+      } else {
+        showError('Incorrect passcode.');
+        passInput.value = '';
+        passInput.focus();
+      }
+    }
+
+    submitBtn.addEventListener('click', tryUnlock);
+    passInput.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        tryUnlock();
+      }
+    });
+
+    // if already unlocked this session, skip the gate
+    try {
+      if (sessionStorage.getItem(STORAGE_KEY) === 'true') unlock();
+    } catch (e) {}
+  })();
+</script>
 </body>
 </html>
